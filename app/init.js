@@ -17,3 +17,5 @@ require(["jquery", "underscore", "backbone"], function($, _, Backbone) {
 require(['jquery'], function($) {
   $('body').append("<h1>Hello World</h1>");
 })
+
+require(['app']);
