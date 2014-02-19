@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e330252-027d-4ab4-b049-ff4f1c1cde3b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/init.js" afterPath="$PROJECT_DIR$/app/init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="backbonetwig.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,19 +35,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="init.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="init.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/init.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="479" selection-end="560" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+            <state line="20" column="17" selection-start="579" selection-end="579" vertical-scroll-proportion="0.27855152" vertical-offset="0" max-vertical-offset="1077">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="55" selection-start="89" selection-end="89" vertical-scroll-proportion="0.013927577" vertical-offset="0" max-vertical-offset="1077">
+            <state line="1" column="2" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
               <folding />
             </state>
           </provider>
@@ -230,7 +229,11 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="preferences.sourceCode.General" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -368,16 +371,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/init.js">
+    <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="479" selection-end="560" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
+        <state line="1" column="2" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.js">
+    <entry file="file://$PROJECT_DIR$/app/init.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="55" selection-start="89" selection-end="89" vertical-scroll-proportion="0.013927577" vertical-offset="0" max-vertical-offset="1077">
+        <state line="20" column="17" selection-start="579" selection-end="579" vertical-scroll-proportion="0.27855152" vertical-offset="0" max-vertical-offset="1077">
           <folding />
         </state>
       </provider>
