@@ -1,21 +1,14 @@
-require.config({
-  urlArgs: "bust=" + (new Date()).getTime(),  //Cache buster
-  paths: {
-    "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
-    "underscore": "vendor/underscore",
-    "backbone": "vendor/backbone/backbone"
-  }
+// Break out the application running from the configuration definition to
+// assist with testing.
+require(["config"], function() {
+  // Kick off the application.
+  require(["app", "router"], function(app, Router) {
+    // Define your master router on the application namespace and trigger all
+    // navigation from this instance.
+    app.router = new Router();
+
+    // Trigger the initial route and enable HTML5 History API support, set the
+    // root folder to '/' by default. Change in app.js.
+    Backbone.history.start({ pushState: true, root: app.root });
+  });
 });
-
-require(["jquery", "underscore", "backbone"], function($, _, Backbone) {
-  console.log("Test output");
-  console.log("$: " + typeof $);
-  console.log("_: " + typeof _);
-  console.log("Backbone: " + typeof Backbone);
-});
-
-require(['jquery'], function($) {
-  $('body').append("<h1>Hello World</h1>");
-})
-
-require(['app']);
