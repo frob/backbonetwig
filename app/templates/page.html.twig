@@ -1,0 +1,44 @@
+<div class="l-container">
+  <header role="banner">
+    {% if site_name or site_slogan %}
+      <div class="name-and-slogan">
+
+      {# Use h1 when the content title is empty #}
+      {% if title %}
+        <strong class="site-name">
+          <a href="{{ front_page }}" title="{{ 'Home' }}" rel="home">{{ site_name }}</a>
+        </strong>
+      {% else %}
+        <h1 class="site-name">
+          <a href="{{ front_page }}" title="{{ 'Home' }}" rel="home">{{ site_name }}</a>
+        </h1>
+      {% endif %}
+
+      {% if site_slogan %}
+        <div class="site-slogan">{{ site_slogan }}</div>
+      {% endif %}
+      </div>{# ./name-and-slogan #}
+    {% endif %}
+  </header>
+
+  {{ messages }}
+
+  <main role="main">
+    <a id="main-content"></a>{# link is in html.html.twig #}
+
+    <div class="l-content">
+    </div>{# /.l-content #}
+
+    <aside class="l-sidebar-first" role="complementary">
+    </aside>
+
+    <aside class="l-sidebar-second" role="complementary">
+    </aside>
+
+  </main>
+
+  <footer role="contentinfo">
+    {{ page.footer }}
+  </footer>
+
+</div>{# /.l-container #}
