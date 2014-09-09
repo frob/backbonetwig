@@ -3,15 +3,17 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'js/collections/users',
-  'js/views/userView'
-], function ($, _, Backbone, Users, UserView) {
+  'twig'
+], function ($, _, Backbone, Twig) {
   var AppRouter = Backbone.Router.extend({
     routes: {
       // Default - catch all
       '': 'defaultAction',
-      // user list
-      'user': 'userList'
+      'resume': 'resume',
+      'contact': 'contact',
+      'blog': 'blog',
+      'portfolio': 'portfolioList',
+      'portfolio/:title': 'portfolioItem'
     }
   });
 
@@ -22,14 +24,25 @@ define([
       console.log("default route");
     });
 
-    router.on('route:userList', function (actions) {
-      console.log("userlist route.");
-      users = new Users();
-      userView = new UserView({model:users});
-      users.fetch();
-      $('#main-content').html(userView.render().el);
-      console.log(userView.render())
-    })
+    router.on('route:resume', function (actions) {
+      console.log("resume route.");
+    });
+
+    router.on('route:contact', function (actions) {
+      console.log("contact route.");
+    });
+
+    router.on('route:blog', function (actions) {
+      console.log("blog route.");
+    });
+
+    router.on('route:portfolioList', function (actions) {
+      console.log("portfolioList route.");
+    });
+
+    router.on('route:portfolioItem', function (actions) {
+      console.log("portfolioItem route.");
+    });
 
     Backbone.history.start();
   };

@@ -25,8 +25,14 @@
 
   <main role="main">
     <a id="main-content"></a>{# link is in html.html.twig #}
+      {% if title %}
+        <h1 class="page-title">
+          {{ title }}
+        </h1>
+      {% endif %}
 
     <div class="l-content">
+      {{ nav }}
     </div>{# /.l-content #}
 
     <aside class="l-sidebar-first" role="complementary">

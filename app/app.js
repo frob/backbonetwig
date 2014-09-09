@@ -10,9 +10,40 @@ define([
       href: 'templates/page.html.twig',
       async: false
     });
-    $('body').append(page.render({
-      site_name: 'This is the Site Name, live demo please work',
-      messages: 'these messages are being output in a twig template'
+
+    var menu = Twig.twig({
+      href: 'templates/menu.html.twig',
+      async: false
+    })
+
+    $('body').html(page.render({
+      site_name: 'Frank Robet Anderson',
+      messages: 'these messages are being output in a twig template',
+      title: 'home',
+      nav: menu.render({
+        items: [
+          {
+            address: '',
+            text: 'home'
+          },
+          {
+            address: '#resume',
+            text: 'resume'
+          },
+          {
+            address: '#contact',
+            text: 'contact'
+          },
+          {
+            address: '#blog',
+            text: 'blog'
+          },
+          {
+            address: '#portfolio',
+            text: 'portfolio'
+          }
+        ]
+      })
     }));
   };
   return {
