@@ -4,7 +4,7 @@ require.config({
   urlArgs: "bust=" + (new Date()).getTime(),
   paths: {
     // Major libraries
-    "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery",
+    "jquery": "vendor/jquery-1.11.1",
     "underscore": "vendor/underscore",
     "backbone": "vendor/backbone/backbone",
     "twig": "vendor/twigjs/twig"
