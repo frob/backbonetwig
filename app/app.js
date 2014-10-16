@@ -2,7 +2,11 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'twig'
+  'twig',
+  'less!styles/vendor/pure/base',
+  'less!styles/vendor/normalize.less/normalize',
+  'less!styles/less/variables',
+  'less!styles/less/generic'
 ], function ($, _, Backbone, Twig) {
   var initialize = function() {
     //var pageTemplate = require(['templates/page.html.twig']);
@@ -23,7 +27,7 @@ define([
       nav: menu.render({
         items: [
           {
-            address: '',
+            address: '#',
             text: 'home'
           },
           {

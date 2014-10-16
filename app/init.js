@@ -15,7 +15,22 @@ require.config({
     // Just a short cut so we can put our html outside the js dir
     // When you have HTML/CSS designers this aids in keeping them out of the js directory
     //templates: 'templates'
+  },
+  packages: [
+    {
+      name: 'less',
+      location: 'vendor/require/plugins/require-less',
+      main: 'less'
+    }
+  ],
+  less: {
+    relativeUrls: true
   }
+  // map: {
+  //   '*': {
+  //     'less': 'require-less/less' // path to less
+  //   }
+  // }
 
 });
 
