@@ -3,54 +3,42 @@ define([
   'underscore',
   'backbone',
   'twig',
-  'less!styles/vendor/pure/base',
+  'page',
+  'contentLoader',
+  'less!styles/vendor/pure/pure',
   'less!styles/vendor/normalize.less/normalize',
   'less!styles/less/variables',
   'less!styles/less/generic'
-], function ($, _, Backbone, Twig) {
-  var initialize = function() {
+], function ($, _, Backbone, Twig, Page, Content) {
+  // @TODO make this a protected attribute
+  var site_name;
+
+  var initialize = function(s_site_name) {
+    this.site_name = s_site_name;
     //var pageTemplate = require(['templates/page.html.twig']);
-    var page = Twig.twig({
-      href: 'templates/page.html.twig',
-      async: false
-    });
-
-    var menu = Twig.twig({
-      href: 'templates/menu.html.twig',
-      async: false
-    })
-
-    $('body').html(page.render({
-      site_name: 'Frank Robet Anderson',
-      messages: 'these messages are being output in a twig template',
-      title: 'home',
-      nav: menu.render({
-        items: [
-          {
-            address: '#',
-            text: 'home'
-          },
-          {
-            address: '#resume',
-            text: 'resume'
-          },
-          {
-            address: '#contact',
-            text: 'contact'
-          },
-          {
-            address: '#blog',
-            text: 'blog'
-          },
-          {
-            address: '#portfolio',
-            text: 'portfolio'
-          }
-        ]
-      })
-    }));
   };
+
+  var getSiteName = function() {
+    return this.site_name;
+  };
+
+  var setSiteName = function(s_site_name) {
+    this.site_name = s_site_name;
+  }
+
+  var printPage = function(page_title, message) {
+    var sn = this.site_name;
+    defered = Content.returnContent(page_title);
+    defered.done( function (content) {
+      console.log(content);
+      Page.printPage(sn, page_title, message, content);
+    });
+  }
+
   return {
-    initialize: initialize
+    initialize: initialize,
+    getSiteName: getSiteName,
+    setSiteName: setSiteName,
+    printPage: printPage
   };
 });

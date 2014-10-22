@@ -7,10 +7,25 @@ require.config({
     "jquery": "vendor/jquery-1.11.1",
     "underscore": "vendor/underscore",
     "backbone": "vendor/backbone/backbone",
-    "twig": "vendor/twigjs/twig"
+    "twig": "vendor/twigjs/twig",
+    "page": "component/page",
+    "menu": "component/menu",
+    "contentLoader": "component/content",
+    "content": "content",
+
 
     // Require.js plugins
-    //text: 'libs/require/text',
+    "async":  'vendor/requirejs-plugins/src/async',
+    "font":   'vendor/requirejs-plugins/src/font',
+    "goog":   'vendor/requirejs-plugins/src/goog',
+    "image":  'vendor/requirejs-plugins/src/image',
+    "json":   'vendor/requirejs-plugins/src/json',
+    "noext":  'vendor/requirejs-plugins/src/noext',
+    "mdown":  'vendor/requirejs-plugins/src/mdown',
+    "propertyParser" : 'vendor/requirejs-plugins/src/propertyParser',
+    "markdownConverter" : 'vendor/requirejs-plugins/lib/Markdown.Converter',
+    "text" : 'vendor/requirejs-plugins/lib/text'
+//    "content": 'content'
 
     // Just a short cut so we can put our html outside the js dir
     // When you have HTML/CSS designers this aids in keeping them out of the js directory
@@ -41,6 +56,7 @@ require([
   'app'
 ], function(Router, App){
   console.log(App);
-  App.initialize();
-  Router.initialize({});
+  App.initialize("Frank Robert Anderson");
+  console.log(App.getSiteName());
+  Router.initialize(App, {});
 });

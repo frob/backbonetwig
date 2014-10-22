@@ -6,7 +6,7 @@
     <div class="name-and-slogan page-width">
 
     {# Use h1 when the content title is empty #}
-    {% if title %}
+    {% if title | title != '' %}
       <strong class="site-name">
         <a href="{{ front_page }}" title="{{ 'Home' }}" rel="home">{{ site_name }}</a>
       </strong>
@@ -33,9 +33,13 @@
       </h1>
     {% endif %}
 
+    {% if content %}
+      {{ content }}
+    {% endif %}
+
   <div class="content page-width">
     {{ nav }}
-  </div>{# /.l-content #}
+  </div>
 
   <aside class="sidebar-first" role="complementary">
   </aside>

@@ -47,6 +47,7 @@ define(
             write : function(pluginName, moduleName, write){
                 if(moduleName in buildMap){
                     var content = text.jsEscape(buildMap[moduleName]);
+                    //console.log(buildMap);
                     write.asModule(pluginName + "!" + moduleName,
                                    "define(function () { return '" +
                                        content +
