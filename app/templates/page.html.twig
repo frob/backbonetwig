@@ -17,14 +17,17 @@
     {% endif %}
 
     {% if site_slogan %}
-      <div class="site-slogan">{{ site_slogan }}</div>
+      <div class="site-slogan content page-width">{{ site_slogan }}</div>
     {% endif %}
     </div>{# ./name-and-slogan #}
   {% endif %}
+  <div class="nav-wrapper content page-width">
+  <!-- Nav goes here -->
+  </div>
 </header>
-
+<aside class="messages">
 {{ messages }}
-
+</aside>
 <main role="main">
   <a id="main-content"></a>{# link is in html.html.twig #}
     {% if title %}
@@ -34,12 +37,11 @@
     {% endif %}
 
     {% if content %}
+    <div class="page-width">
       {{ content }}
+    </div>
     {% endif %}
 
-  <div class="content page-width">
-    {{ nav }}
-  </div>
 
   <aside class="sidebar-first" role="complementary">
   </aside>

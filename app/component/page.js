@@ -14,7 +14,7 @@ define([
       if (content === undefined) content = '';
 
       var page = Twig.twig({
-        href: 'templates/page.html.twig',
+        href: 'templates/page.html.twig' + "?bust=" + (new Date()).getTime(),
         async: false
       });
 
@@ -22,9 +22,10 @@ define([
         site_name: site_name,
         messages: message,
         title: page_title,
-        nav: Menu.render(),
         content: content
       }));
+
+      Menu.render();
     };
 
 
