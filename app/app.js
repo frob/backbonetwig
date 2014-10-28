@@ -26,11 +26,20 @@ define([
     this.site_name = s_site_name;
   }
 
-  var printPage = function(page_title, message) {
+  var initializePage = function(page_title, message) {
     var sn = this.site_name;
     defered = Content.returnContent(page_title);
     defered.done( function (content) {
-      console.log(content);
+      Page.printPage(sn, page_title, message, content);
+    });
+  }
+
+  var printPageContent = function(page_title, message) {
+    // @todo: distiguish this methode from initializePage by making it only
+    // redraw/update content an not redraw the whole page.
+    var sn = this.site_name;
+    defered = Content.returnContent(page_title);
+    defered.done( function (content) {
       Page.printPage(sn, page_title, message, content);
     });
   }
@@ -39,6 +48,7 @@ define([
     initialize: initialize,
     getSiteName: getSiteName,
     setSiteName: setSiteName,
-    printPage: printPage
+    initializePage: initializePage,
+    printPageContent: printPageContent
   };
 });

@@ -55,8 +55,6 @@ require([
   'router',
   'app'
 ], function(Router, App){
-  console.log(App);
   App.initialize("Frank Robert Anderson");
-  console.log(App.getSiteName());
   Router.initialize(App, {});
 });

@@ -20,34 +20,35 @@ define([
   var initialize = function(App, options){
     var router = new AppRouter(options);
     App.setSiteName("Frank Robert Anderson");
+    App.initializePage("", "this is the home page");
 
     router.on('route:defaultAction', function (actions) {
-      App.printPage("", "this is the home page");
+      App.printPageContent("", "This is my Home page");
       console.log("default route");
     });
 
     router.on('route:resume', function (actions) {
-      App.printPage("Resume", "This is my Resume");
+      App.printPageContent("Resume", "This is my Resume");
       console.log("resume route.");
     });
 
     router.on('route:contact', function (actions) {
-      App.printPage("Contact", "This is my Conact Page");
+      App.printPageContent("Contact", "This is my Conact Page");
       console.log("contact route.");
     });
 
     router.on('route:blog', function (actions) {
-      App.printPage("Blog", "This is my Blog");
+      App.printPageContent("Blog", "This is my Blog");
       console.log("blog route.");
     });
 
     router.on('route:portfolioList', function (actions) {
-      App.printPage("Portfolio", "This is my Portfolio");
+      App.printPageContent("Portfolio", "This is my Portfolio");
       console.log("portfolioList route.");
     });
 
     router.on('route:portfolioItem', function (portfolioItem) {
-      App.printPage(portfolioItem, "This is a Portfolio Item Page for " + portfolioItem);
+      App.printPageContent(portfolioItem, "This is a Portfolio Item Page for " + portfolioItem);
       console.log("portfolioItem route.");
     });
 

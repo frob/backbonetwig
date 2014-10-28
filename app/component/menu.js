@@ -11,86 +11,89 @@ define([
 
       },
       defaults: {
-        tagName: 'a',
-        className: undefined,
+        class: undefined,
         href: undefined,
         attributes: undefined
       }
     });
 
-      menuItems = [
-        new MenuItem({
-          className: 'menu-item',
-          href: '/#',
-          attributes: undefined,
-          text: 'Home'
-        }),
-        new MenuItem({
-          className: 'menu-item',
-          href: '/#resume',
-          attributes: undefined,
-          text: 'Resume'
-        }),
-        new MenuItem({
-          className: 'menu-item',
-          href: '/#contact',
-          attributes: undefined,
-          text: 'contact'
-        }),
-        new MenuItem({
-          className: 'menu-item',
-          href: '/#blog',
-          attributes: undefined,
-          text: 'Blog'
-        }),
-        new MenuItem({
-          className: 'menu-item',
-          href: '/#portfolio',
-          attributes: undefined,
-          text: 'Portfolio'
-        }),
-      ];
+    menuItems = [
+      new MenuItem({
+        class: 'menu-item',
+        href: '/#',
+        attributes: undefined,
+        text: 'Home'
+      }),
+      new MenuItem({
+        class: 'menu-item',
+        href: '/#resume',
+        attributes: undefined,
+        text: 'Resume'
+      }),
+      new MenuItem({
+        class: 'menu-item',
+        href: '/#contact',
+        attributes: undefined,
+        text: 'Contact'
+      }),
+      new MenuItem({
+        class: 'menu-item',
+        href: '/#blog',
+        attributes: undefined,
+        text: 'Blog'
+      }),
+      new MenuItem({
+        class: 'menu-item',
+        href: '/#portfolio',
+        attributes: undefined,
+        text: 'Portfolio'
+      }),
+    ];
 
-      var MenuItemView = Backbone.View.extend({
-        tagName: 'a',
-        menuSelector: '.main-nav',
-        render: function () {
-          this.$el.text(this.attributes.text);
-          console.log(this);
-          $(this.menuSelector).append(this.el);
-          return this;
+    var MenuItemView = Backbone.View.extend({
+      tagName: 'a',
+      menuSelector: '.main-nav',
+      render: function () {
+        this.$el.text(this.attributes.text);
+        $(this.menuSelector).append(this.el);
+        return this;
+      },
+      events: {
+        'click': function(event) {
+          this.$el.addClass("active");
         }
-      });
-
-      menuItemsView = [];
-
-      for (var i = 0; i < menuItems.length; i++) {
-        menuItemsView.push({ model: new MenuItemView(menuItems[i]) });
       }
+    });
 
-      var Navigation = Backbone.Collection.extend({
-        initialize: function () {
+    menuItemsView = [];
 
-        },
-        model: MenuItem
-      });
-
-      var nav = new Navigation();
-      nav.add(menuItems);
-
-      var menu = Twig.twig({
-        href: 'templates/menu.html.twig' + "?bust=" + (new Date()).getTime(),
-        async: false
-      });
-
-      $('.nav-wrapper').append(menu.render({ menuClass: 'main-nav menu' }));
-      for (var i = 0; i < menuItemsView.length; i++) {
-        menuItemsView[i].model.render();
-      }
-      console.log("render menu called");
+    for (var i = 0; i < menuItems.length; i++) {
+      menuItemsView.push({ model: new MenuItemView(menuItems[i]) });
     }
 
-    return {
-      render: printNavigation
+    var Navigation = Backbone.Collection.extend({
+      initialize: function () {
+
+      },
+      model: MenuItem
+    });
+
+    var nav = new Navigation();
+    nav.add(menuItems);
+
+    var menu = Twig.twig({
+      href: 'templates/menu.html.twig' + "?bust=" + (new Date()).getTime(),
+      async: false
+    });
+
+    $('.nav-wrapper').append(menu.render({ menuClass: 'main-nav menu' }));
+
+    for (var i = 0; i < menuItemsView.length; i++) {
+      menuItemsView[i].model.render();
     }
+  }
+
+  return {
+    render: printNavigation
+  }
 });
