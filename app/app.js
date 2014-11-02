@@ -4,18 +4,17 @@ define([
   'backbone',
   'twig',
   'page',
-  'contentLoader',
+  'dynamicContent',
   'less!styles/vendor/pure/pure',
   'less!styles/vendor/normalize.less/normalize',
   'less!styles/less/variables',
   'less!styles/less/generic'
-], function ($, _, Backbone, Twig, Page, Content) {
+], function ($, _, Backbone, Twig, Page, DynamicContent) {
   // @TODO make this a protected attribute
   var site_name;
 
   var initialize = function(s_site_name) {
     this.site_name = s_site_name;
-    //var pageTemplate = require(['templates/page.html.twig']);
   };
 
   var getSiteName = function() {
@@ -26,22 +25,21 @@ define([
     this.site_name = s_site_name;
   }
 
-  var initializePage = function(page_title, message) {
+  var initializePage = function(options) {
+    Page.printPage(this.site_name, options.route, "");
+  }
+
+  var printPageContent = function(options) {
+    defered = DynamicContent.fetchContent(options.route);
     var sn = this.site_name;
-    defered = Content.returnContent(page_title);
+
     defered.done( function (content) {
-      Page.printPage(sn, page_title, message, content);
+      Page.printPage(sn, options.route, content, options.template, options.selector);
     });
   }
 
-  var printPageContent = function(page_title, message) {
-    // @todo: distiguish this methode from initializePage by making it only
-    // redraw/update content an not redraw the whole page.
-    var sn = this.site_name;
-    defered = Content.returnContent(page_title);
-    defered.done( function (content) {
-      Page.printPage(sn, page_title, message, content);
-    });
+  var printMessage = function(options) {
+    Page.printMessage(options.message, options.reset);
   }
 
   return {
@@ -49,6 +47,7 @@ define([
     getSiteName: getSiteName,
     setSiteName: setSiteName,
     initializePage: initializePage,
-    printPageContent: printPageContent
+    printPageContent: printPageContent,
+    printMessage: printMessage
   };
 });

@@ -13,22 +13,41 @@ define([
       'contact': 'contact',
       'blog': 'blog',
       'portfolio': 'portfolioList',
-      'portfolio/:title': 'portfolioItem'
+      'portfolio/:title': 'portfolioItem',
+      ':title': 'catchAll'
     }
   });
 
   var initialize = function(App, options){
     var router = new AppRouter(options);
     App.setSiteName("Frank Robert Anderson");
-    App.initializePage("", "this is the home page");
+
+    App.initializePage({
+      route: "",
+      template: ""
+    });
 
     router.on('route:defaultAction', function (actions) {
-      App.printPageContent("", "This is my Home page");
+      App.printPageContent({
+        route: "",
+        template: "",
+        selector: ".content-region"
+      });
+
+      App.printMessage({message:"this is the default"});
+
       console.log("default route");
     });
 
     router.on('route:resume', function (actions) {
-      App.printPageContent("Resume", "This is my Resume");
+      App.printPageContent({
+        route: "resume",
+        template: "page",
+        selector: ".content-region"
+      });
+
+      App.printMessage({message:"this is the resume", reset:false});
+
       console.log("resume route.");
     });
 
@@ -50,6 +69,11 @@ define([
     router.on('route:portfolioItem', function (portfolioItem) {
       App.printPageContent(portfolioItem, "This is a Portfolio Item Page for " + portfolioItem);
       console.log("portfolioItem route.");
+    });
+
+    router.on('route:catchAll', function (path) {
+      App.printPageContent(path, "This is a generic Page for " + path);
+      console.log("generic route.");
     });
 
     Backbone.history.start();

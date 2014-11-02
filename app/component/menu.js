@@ -13,7 +13,8 @@ define([
       defaults: {
         class: undefined,
         href: undefined,
-        attributes: undefined
+        attributes: undefined,
+        state: null
       }
     });
 
@@ -55,12 +56,16 @@ define([
       menuSelector: '.main-nav',
       render: function () {
         this.$el.text(this.attributes.text);
-        $(this.menuSelector).append(this.el);
+        if ($(this.menuSelector + ' [href="' + this.attributes.href + '"]').length == 0) {
+          $(this.menuSelector).append(this.el);
+        }
+
         return this;
       },
       events: {
         'click': function(event) {
           this.$el.addClass("active");
+          this.$el.siblings().removeClass("active");
         }
       }
     });
