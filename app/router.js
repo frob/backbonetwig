@@ -52,8 +52,13 @@ define([
     });
 
     router.on('route:contact', function (actions) {
-      App.printPageContent("Contact", "This is my Conact Page");
-      console.log("contact route.");
+      App.printPageContent({
+        route: "contact",
+        template: "page",
+        selector: ".content-region"
+      });
+
+      App.printMessage({message:"this is the Contact page"});
     });
 
     router.on('route:blog', function (actions) {
@@ -72,7 +77,12 @@ define([
     });
 
     router.on('route:catchAll', function (path) {
-      App.printPageContent(path, "This is a generic Page for " + path);
+      App.printPageContent({
+        route: path,
+        template: "page",
+        selector: ".content-region"
+      });
+
       console.log("generic route.");
     });
 

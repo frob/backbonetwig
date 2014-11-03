@@ -35,16 +35,26 @@ define([
       Menu.render();
     };
 
-    var printMessage = function(message, reset) {
+    var printMessage = function(text, reset) {
       // Default to empty message
-      if (message === undefined || message === "") message = '';
+      if (text === undefined || text === "") message = '';
       if (reset === undefined || reset === "") reset = true;
 
+      var message  = Twig.twig({
+        href: 'templates/message.html.twig' + "?bust=" + (new Date()).getTime(),
+        async: false
+      });
+
+      var html = message.render({
+        'text': text,
+        'message_class': "message page-width"
+      })
+
       if(reset) {
-        $(".messages").html(message);
+        $(".messages").html(html);
       }
       else {
-        $(".messages").append(message);
+        $(".messages").append(html);
       }
 
     };
