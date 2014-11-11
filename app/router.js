@@ -62,8 +62,13 @@ define([
     });
 
     router.on('route:blog', function (actions) {
-      App.printPageContent("Blog", "This is my Blog");
-      console.log("blog route.");
+      App.printPageContent({
+        route: "blog",
+        template: "page",
+        selector: ".content-region"
+      });
+
+      App.printMessage({message:"this is the Blog page"});
     });
 
     router.on('route:portfolioList', function (actions) {

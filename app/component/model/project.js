@@ -1,5 +1,5 @@
 define(['underscore', 'backbone'], function(_, Backbone) {
-  var TodoModel = Backbone.Model.extend({
+  var ProjectModel = Backbone.Model.extend({
     // Default attributes for the project.
     defaults: {
       // Ensure that each project created has `content`.
@@ -21,5 +21,5 @@ define(['underscore', 'backbone'], function(_, Backbone) {
     }
 
   });
-  return TodoModel;
+  return ProjectModel;
 });
