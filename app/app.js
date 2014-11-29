@@ -13,6 +13,7 @@ define([
   // @TODO make this a protected attribute
   var site_name;
 
+
   var initialize = function(s_site_name) {
     this.site_name = s_site_name;
   };
