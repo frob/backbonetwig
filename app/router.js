@@ -82,11 +82,7 @@ define([
     });
 
     router.on('route:catchAll', function (path) {
-      App.printPageContent({
-        route: path,
-        template: "page",
-        selector: ".content-region"
-      });
+      App.printPageContentJSON(path);
 
       console.log("generic route.");
     });

@@ -39,6 +39,15 @@ define([
     });
   }
 
+  var printPageContentJSON = function (path) {
+    defered = DynamicContent.fetchJSON(path);
+    var sn = this.site_name;
+
+    defered.done( function (content) {
+      Page.printPageJSON(sn, path, content);
+    });
+  }
+
   var printMessage = function(options) {
     Page.printMessage(options.message, options.reset);
   }
@@ -49,6 +58,7 @@ define([
     setSiteName: setSiteName,
     initializePage: initializePage,
     printPageContent: printPageContent,
+    printPageContentJSON: printPageContentJSON,
     printMessage: printMessage
   };
 });
